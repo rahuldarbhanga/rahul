@@ -4,8 +4,8 @@ import java.io.* ;
 import java.util.* ;
 
 
-/*  Class Name:- EmployeeInfo
-    Purpose:- To Get Primary information From User.
+/**  Class Name:- EmployeeInfo
+ *  Purpose:- To Get Primary information From User.
 */
 
 class EmployeeInfo
@@ -48,7 +48,7 @@ class EmployeeInfo
 
 	void Show()
 	{
-	System.out.println("Nothing to Show");
+	System.out.println("Nothing to Show Here");
 	}
 
 	void Show(String n)
