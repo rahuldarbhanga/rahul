@@ -6,11 +6,12 @@ import java.io.*;
 /* 
 	Class Name:- Savings
 	Desciption:- A Class to Create Savings Account with 2 Operations To Perform i.e. Deposit & Withdraw Money.
-		     This Class implements Comparator Interface and Overrides  hashCode() , equals() , compare() Methods.
-	Methods: Getinfo(), deposit() , withdraw(), hashCode() , equals() , compare() .
+		     This Class Overrides equals() Methods of List.
+	Methods: Getinfo(), deposit() , withdraw(),  equals() , compare() ,addSavings() , Get_Object() , Check_list_Empty() .
+	Collections Used : HashMap , ArrayList
 */
 
-public class Savings extends BankAccount implements Comparator
+public class Savings extends BankAccount 
 {
 	static Scanner input = new Scanner(System.in);
 	public static List<Savings> list = new ArrayList<Savings>(); 
@@ -113,43 +114,19 @@ public class Savings extends BankAccount implements Comparator
 		{ return false; }
 	}
 
-//This Method is Ovverriden Method To Create Hash Code.
-	public int hashCode()
-	{ 	
-		int m =	(this.Balance) % 10 ;
-		return m;
-	}
 
 //This Method is Ovverriden Method Which Compares Two Objects are Equal(With There Balance).
 	public int compare(Object o1,Object o2)
 	{	Savings A1 = (Savings) o1; 
 		Savings A2 = (Savings) o2;
 		if(A1.Balance == A2.Balance)
-		{ System.out.println("A1:= "+A1.Balance + "A2:=" +A2.Balance);
+		{
 		return 0; }
 		else if(A1.Balance > A2.Balance)
 		{ return 1; }
 		else 
 		{ return -1; }
 	}
-
-//This Method is To Create A Map.	
- 	public static void CreateHashMap()
-  	 { Iterator<Savings> iterator=list.iterator();
-           while(iterator.hasNext())              
-       		 { Savings saving=iterator.next();
-           	   int code=saving.hashCode();
-                   SavingMap.put(code,saving);  }
-           System.out.println("ATM Account Created With Account No. As Password...");
-   	}
-
-//This Method is To Display The Map.	
-	public static void displayHashMap()
-	{
-	        for(Map.Entry<Integer,Savings> entry : SavingMap.entrySet())
-	        {  System.out.println("Key: "+entry.getKey()+"\t Value: "+entry.getValue());  }
-   	}    
-
 	
 
 

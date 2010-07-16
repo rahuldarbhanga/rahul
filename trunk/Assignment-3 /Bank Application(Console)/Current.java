@@ -6,15 +6,17 @@ import java.io.*;
 /* 
 	Class Name:- Current
 	Desciption:- A Class to Create Current Account with 2 Operations To Perform i.e. Deposit & Withdraw Money.
-		     This Class implements Comparator Interface and Overrides  hashCode() , equals() , compare() Methods.
-	Methods: Getinfo(), deposit() , withdraw(), hashCode() , equals() , compare().
+		     This Class overrides equals()  Methods of List.
+	Methods: Getinfo(), deposit() , withdraw(),  equals() , compare() ,addSavings() , Get_Object() , Check_list_Empty() .
+	Collections Used : HashMap , ArrayList
+
 */
 
-public class Current extends BankAccount implements Comparator
+public class Current extends BankAccount 
 {
 	static Scanner input = new Scanner(System.in);
 	public static List<Current> list2 = new ArrayList<Current>(); 
- 	private static Map<Integer,Current> CurrentMap=new HashMap<Integer,Current>();
+	private static Map<Integer,Current> CurrentMap=new HashMap<Integer,Current>();
 	static int i=0;
 	int Account_Count = 0;
 	
@@ -105,12 +107,6 @@ public class Current extends BankAccount implements Comparator
 		{ return false; }
 	}
 
-//This Method is Ovverriden Method To Create Hash Code.
-	public int hashCode()
-	{ 	
-		int m =	(this.Balance) % 10 ;
-		return m;
-	}
 	
 //This Method is Ovverriden Method Which Compares Two Objects are Equal(With There Balance).
 	public int compare(Object o1,Object o2)
@@ -124,24 +120,6 @@ public class Current extends BankAccount implements Comparator
 		else 
 		{ return -1; }
 	}
-
-//This Method is To Create A Map.	
-	 public static void CreateHashMap()
-  	 { Iterator<Current> iterator=list2.iterator();
-           while(iterator.hasNext())              
-       	    {
-           Current current=iterator.next();
-           int code=current.hashCode();
-           CurrentMap.put(code,current);
-             }       
-            System.out.println("ATM Account Created With Account No. As Password...");
-   	}
-
-//This Method is To Display The Map.
-	public static void displayHashMap()
-	{
-	        for(Map.Entry<Integer,Current> entry : CurrentMap.entrySet())
-	        { System.out.println("Key: "+entry.getKey()+"\t Value: "+entry.getValue()); }
-   	}    
+ 
 
 }//End Of Class Current
