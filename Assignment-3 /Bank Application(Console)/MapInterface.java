@@ -34,7 +34,7 @@ public class MapInterface
 //This Method Displays All (Key,Value) Pairs.
 	public void display()
 	{
-	       for(int i = 0; i < count ; i++)
+	       for(i = 0; i < count ; i++)
 	       { System.out.println("Password: " +For_Keys[i] + "\tObject Name: " +For_Objects[i]); }
 		
    	}	
@@ -42,7 +42,7 @@ public class MapInterface
 	public boolean containsKey(Object key)
 	{	boolean flag = false;
 		key = (Integer)key;
-		for(int i = 0; i < count ; i++)
+		for(i = 0; i < count ; i++)
 	       { 	if(For_Keys[i] == key)
 			{ return true; }
 		}
@@ -53,7 +53,7 @@ public class MapInterface
 	public Object get(Object key)
 	{ 	boolean flag = false;
 		key = (Integer)key;
-		for(int i = 0; i < count ; i++)
+		for( i = 0; i < count ; i++)
 	       { 	if(For_Keys[i] == key)
 			{ flag = true; break; }
 		}
