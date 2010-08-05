@@ -4,13 +4,9 @@
  */
 package com.wissen.NewGiskard.server.impl;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.wissen.NewGiskard.client.services.AuthanticateUserService;
 import com.wissen.NewGiskard.server.UserAuthantication;
-import com.wissen.NewGiskard.server.constants.HttpSessionsConstants;
 import com.wissen.NewGiskard.server.domainObjects.LoginDetails;
 
 /**
@@ -27,13 +23,10 @@ public class AuthanticateUserServiceImpl extends RemoteServiceServlet implements
     public Boolean authanticateUser(String userName, String password) throws IllegalArgumentException {
         Boolean Tag = false;
 
-        HttpServletRequest request = this.getThreadLocalRequest();
         UserAuthantication userAuthanticate = new UserAuthantication();
-        LoginDetails logDetails = userAuthanticate.AuthUser(userName, password);
+        LoginDetails logDetails = userAuthanticate.authUser(userName, password);
         if (logDetails != null) {
             Tag = true;
-            HttpSession httpSession = request.getSession();
-            httpSession.setAttribute(HttpSessionsConstants.USER_ID, logDetails.getId());
         }
         return Tag;
     }

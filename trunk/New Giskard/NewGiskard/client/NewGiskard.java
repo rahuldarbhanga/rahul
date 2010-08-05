@@ -7,7 +7,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import com.wissen.NewGiskard.client.controller.Controller;
 import com.wissen.NewGiskard.client.observers.LoginObserver;
 import com.wissen.NewGiskard.client.widgets.Dashboard;
-import com.wissen.NewGiskard.client.widgets.LoginPage;
+import com.wissen.NewGiskard.client.widgets.LoginWidget;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -20,7 +20,7 @@ public class NewGiskard implements EntryPoint, LoginObserver {
         vPanel = new VerticalPanel();
         RootPanel.get("verticalpanel").add(vPanel);
         vPanel.addStyleName("vPanel");
-        vPanel.add(new LoginPage());
+        vPanel.add(new LoginWidget());
         Controller.getInstance().addLoginObserver(this);
 
     }

@@ -12,7 +12,7 @@ public class UserAuthantication {
      * Description:- Method For Authantication Of User From Database.
      */
 
-    public LoginDetails AuthUser(String userName, String password) {
+    public LoginDetails authUser(String userName, String password) {
 
         HibernateUtill hibernateUtill = new HibernateUtill();
 
