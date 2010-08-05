@@ -39,8 +39,6 @@ public class LoginWidget extends Composite {
 
     private Button          cancelButton  = new Button("Cancel");
 
-    private Label           warningLabel  = new Label();
-
     public LoginWidget() {
         init();
         initWidget(mainabsPanel);
@@ -70,7 +68,7 @@ public class LoginWidget extends Composite {
 
     private void init() {
 
-        mainabsPanel.setSize("300px", "170px");
+        mainabsPanel.setSize("330px", "170px");
         mainabsPanel.addStyleName("panel");
 
         userNameText.setWidth("120px");
@@ -82,7 +80,6 @@ public class LoginWidget extends Composite {
         loginPanel.add(passwordLabel, 0, 40);
         loginPanel.add(passwordText, 90, 40);
         loginPanel.add(signInButton, 0, 70);
-        loginPanel.add(warningLabel, 0, 100);
         loginPanel.add(cancelButton, 90, 70);
 
         mainabsPanel.add(loginPanel, 60, 40);
@@ -96,8 +93,6 @@ public class LoginWidget extends Composite {
 
         @Override
         public void onKeyUp(KeyUpEvent event) {
-            warningLabel.setText("");
-
             if (userNameText.getText().equals("") || passwordText.getText().equals("")) {
                 signInButton.setEnabled(false);
             } else {

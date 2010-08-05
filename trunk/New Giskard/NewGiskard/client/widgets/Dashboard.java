@@ -6,9 +6,9 @@ package com.wissen.NewGiskard.client.widgets;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.FlowPanel;
 
 /**
  * @author Rahul Patil
@@ -17,9 +17,9 @@ import com.google.gwt.user.client.ui.FlowPanel;
  */
 public class Dashboard extends Composite {
 
-    private FlowPanel dashboardPanel;
+    private AbsolutePanel dashboardPanel;
 
-    private Button    payrollButton, teamButton, invoiceButton, customerButton, logoutButton;
+    private Button        payrollButton, teamButton, invoiceButton, customerButton, logoutButton;
 
     public Dashboard() {
 
@@ -33,18 +33,19 @@ public class Dashboard extends Composite {
      * */
     private void init() {
 
-        dashboardPanel = new FlowPanel();
+        dashboardPanel = new AbsolutePanel();
         payrollButton = new Button("Payroll");
         teamButton = new Button("Team");
         invoiceButton = new Button("Invoice");
         customerButton = new Button("Customer");
         logoutButton = new Button("Logout");
 
-        dashboardPanel.add(customerButton);
-        dashboardPanel.add(teamButton);
-        dashboardPanel.add(payrollButton);
-        dashboardPanel.add(invoiceButton);
-        dashboardPanel.add(logoutButton);
+        dashboardPanel.setSize("630px", "170px");
+        dashboardPanel.add(customerButton, 100, 20);
+        dashboardPanel.add(teamButton, 200, 20);
+        dashboardPanel.add(payrollButton, 270, 20);
+        dashboardPanel.add(invoiceButton, 360, 20);
+        dashboardPanel.add(logoutButton, 450, 20);
 
         logoutButton.addClickHandler(new ClickHandler() {
 
