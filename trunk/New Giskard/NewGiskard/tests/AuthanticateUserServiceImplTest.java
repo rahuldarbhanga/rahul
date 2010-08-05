@@ -7,6 +7,7 @@ package com.wissen.NewGiskard.server.impl.tests;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -29,7 +30,7 @@ public class AuthanticateUserServiceImplTest {
 
     private AuthanticateUserServiceImpl service;
 
-    java.sql.Connection                 connection = null;
+    Connection                          connection = null;
 
     Statement                           statement;
 
@@ -45,7 +46,7 @@ public class AuthanticateUserServiceImplTest {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/NewGiskard", "root", "wissen");
             statement = connection.createStatement();
-            statement.execute("insert into GiskardLoginData values(1,'Rahul' ,'swapnil')");
+            statement.execute("insert into GiskardLoginData values(1,'Rahul' ,'Swapnil')");
             statement.close();
 
         } catch (Exception e) {
@@ -77,9 +78,9 @@ public class AuthanticateUserServiceImplTest {
     public void testAuthUserBothCorrect() {
         Boolean result;
 
-        result = service.authanticateUser("Raj", "Raj");
+        result = service.authanticateUser("Rahul", "Rahul");
 
-        assertTrue("return result " + result + " instead of true", result = true);
+        assertTrue("The Result is: " + result + "  Instead of True", result = true);
 
     }
 
@@ -90,8 +91,8 @@ public class AuthanticateUserServiceImplTest {
     @Test
     public void testAuthUserWrongUsername() {
         Boolean result;
-        result = service.authanticateUser("Ra", "Raj");
-        assertFalse("return result " + result + " instead of true", result = false);
+        result = service.authanticateUser("Ra", "Rahul");
+        assertFalse("The Result is: " + result + " Instead of True", result = false);
 
     }
 
@@ -102,7 +103,7 @@ public class AuthanticateUserServiceImplTest {
     public void testAuthUserWrongPassword() {
         Boolean result;
         result = service.authanticateUser("Rahul", "Ra");
-        assertFalse("return result " + result + " instead of true", result = false);
+        assertFalse("The Result is:" + result + "  Instead of True", result = false);
 
     }
 
