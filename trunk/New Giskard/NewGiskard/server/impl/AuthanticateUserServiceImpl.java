@@ -25,6 +25,7 @@ public class AuthanticateUserServiceImpl extends RemoteServiceServlet implements
 
         UserAuthantication userAuthanticate = new UserAuthantication();
         LoginDetails logDetails = userAuthanticate.authUser(userName, password);
+
         if (logDetails != null) {
             Tag = true;
         }
