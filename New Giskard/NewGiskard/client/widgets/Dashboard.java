@@ -6,6 +6,7 @@ package com.wissen.NewGiskard.client.widgets;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
@@ -41,6 +42,7 @@ public class Dashboard extends Composite {
         logoutButton = new Button("Logout");
 
         dashboardPanel.setSize("630px", "170px");
+
         dashboardPanel.add(customerButton, 100, 20);
         dashboardPanel.add(teamButton, 200, 20);
         dashboardPanel.add(payrollButton, 270, 20);
@@ -51,6 +53,8 @@ public class Dashboard extends Composite {
 
             @Override
             public void onClick(ClickEvent event) {
+                Window.alert("You are Successfully Logged Out...!!!");
+                dashboardPanel.clear();
 
             }
         });
