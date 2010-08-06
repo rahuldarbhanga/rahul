@@ -4,6 +4,8 @@
  */
 package com.wissen.NewGiskard.server.domainObjects;
 
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,15 +25,37 @@ public class LoginDetails {
     @Id
     @Column(name = "LoginId")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int    id;
+    private int       id;
 
     @Column(name = "UserName")
-    private String userName;
+    private String    userName;
 
     @Column(name = "Password")
-    private String password;
+    private String    password;
+
+    @Column(name = "CreatedTimeStamp")
+    private Timestamp createdTimeStamp;
+
+    @Column(name = "UpdatedtedTimeStamp")
+    private Timestamp updatetedTimeStamp;
 
     //*************************************** Get - Set Methods **********************************
+
+    public Timestamp getCreatedTimeStamp() {
+        return createdTimeStamp;
+    }
+
+    public void setCreatedTimeStamp(Timestamp createdTimeStamp) {
+        this.createdTimeStamp = createdTimeStamp;
+    }
+
+    public Timestamp getUpdatetedTimeStamp() {
+        return updatetedTimeStamp;
+    }
+
+    public void setUpdatetedTimeStamp(Timestamp updatetedTimeStamp) {
+        this.updatetedTimeStamp = updatetedTimeStamp;
+    }
 
     public int getId() {
         return id;
