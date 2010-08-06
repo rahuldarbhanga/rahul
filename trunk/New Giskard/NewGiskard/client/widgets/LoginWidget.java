@@ -62,8 +62,8 @@ public class LoginWidget extends Composite {
 
     }
 
-    /*
-     *   This method Initialise all widgets
+    /**
+     * This method Initialise all widgets
      */
 
     private void init() {
@@ -86,8 +86,8 @@ public class LoginWidget extends Composite {
 
     }
 
-    /*
-     *  Enable Sign In Button Only If Both Text Boxes Are Filled...
+    /**
+     * Enable Sign In Button Only If Both Text Boxes Are Filled...
      */
     public class keyupHandler implements KeyUpHandler {
 
@@ -107,7 +107,7 @@ public class LoginWidget extends Composite {
         @Override
         public void onClick(ClickEvent event) {
 
-            /*
+            /**
              * Call To Controllers Method For User Autharization.
              */
             Controller.getInstance().userAuthantication(userNameText.getText(), passwordText.getText());

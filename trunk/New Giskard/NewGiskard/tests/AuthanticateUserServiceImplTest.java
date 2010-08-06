@@ -70,7 +70,7 @@ public class AuthanticateUserServiceImplTest {
 
     }
 
-    /*
+    /**
      * Test Case for a Vaild User name and Password
      */
 
@@ -84,7 +84,7 @@ public class AuthanticateUserServiceImplTest {
 
     }
 
-    /*
+    /**
      * Test Case for a InVaild User name.
      */
 
@@ -96,7 +96,7 @@ public class AuthanticateUserServiceImplTest {
 
     }
 
-    /*
+    /**
      * Test Case for a InVaild Password.
      */
     @Test
