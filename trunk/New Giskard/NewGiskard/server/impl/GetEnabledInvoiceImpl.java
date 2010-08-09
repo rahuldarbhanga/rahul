@@ -6,7 +6,7 @@ package com.wissen.NewGiskard.server.impl;
 
 import java.util.List;
 
-import com.wissen.NewGiskard.client.data.InvoiceInfo;
+import com.wissen.NewGiskard.client.data.InvoiceDTO;
 import com.wissen.NewGiskard.client.services.GetEnabledInvoice;
 import com.wissen.NewGiskard.server.GetEnabledInvoices;
 
@@ -18,17 +18,12 @@ import com.wissen.NewGiskard.server.GetEnabledInvoices;
 public class GetEnabledInvoiceImpl implements GetEnabledInvoice {
 
     @Override
-    public Boolean getEnabledInvoice() throws IllegalArgumentException {
-
-        Boolean Tag = false;
+    public List<InvoiceDTO> getEnabledInvoice() throws IllegalArgumentException {
 
         GetEnabledInvoices getEnabledInvoices = new GetEnabledInvoices();
-        List<InvoiceInfo> Ilist = getEnabledInvoices.getInvoices();
+        List<InvoiceDTO> Ilist = getEnabledInvoices.getInvoices();
 
-        if (Ilist != null) {
-            Tag = true;
-        }
-        return Tag;
+        return Ilist;
 
     }
 
