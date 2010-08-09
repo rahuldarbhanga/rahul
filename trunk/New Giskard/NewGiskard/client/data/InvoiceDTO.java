@@ -97,6 +97,11 @@ public class InvoiceDTO implements IsSerializable {
 
     //****************************************** Methods *****************************************
 
+    /**
+     * Method To Get A List Of Column Data Objects With Respect To The Columns In The Table.
+     * 
+     */
+
     public ColumnData[] GetColumnData(InvoiceDTO dto) {
         ColumnData[] columns = new ColumnData[4];
 
@@ -121,6 +126,10 @@ public class InvoiceDTO implements IsSerializable {
 
     }
 
+    /**
+     * Method To Get A List Of Column Headers of Columns In The Table.
+     * 
+     */
     public static String[] GetColumnHeader() {
 
         String[] columnHeader = new String[4];
