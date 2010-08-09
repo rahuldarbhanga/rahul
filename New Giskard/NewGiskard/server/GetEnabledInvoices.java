@@ -4,12 +4,14 @@
  */
 package com.wissen.NewGiskard.server;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import com.wissen.NewGiskard.client.data.InvoiceInfo;
+import com.wissen.NewGiskard.client.data.InvoiceDTO;
+import com.wissen.NewGiskard.server.domainObjects.Invoice;
 import com.wissen.NewGiskard.server.hibernate.HibernateUtill;
 
 /**
@@ -22,18 +24,41 @@ import com.wissen.NewGiskard.server.hibernate.HibernateUtill;
 
 public class GetEnabledInvoices {
 
-    public List<InvoiceInfo> getInvoices() {
+    public List<InvoiceDTO> getInvoices() {
 
         HibernateUtill hibernateUtill = new HibernateUtill();
 
         Session session = hibernateUtill.getSession();
 
-        Query userAuthanticationQuery = session.createQuery("from InvoiceDetails invoice where invoice.enabledFlag = '1' ");
+        Query userAuthanticationQuery = session.createQuery(" from Invoice invoice where invoice.enabledFlag = '1' ");
 
-        List<InvoiceInfo> Ilist = userAuthanticationQuery.list();
-
-        return Ilist;
+        return invoiceConvertToInvoiceDTO(userAuthanticationQuery.list());
 
     }
 
+    /**
+     * This Method Converts Client Side Object To Server Side Object.
+     * 
+     */
+    public List<InvoiceDTO> invoiceConvertToInvoiceDTO(List<Invoice> Ilist) {
+
+        List<InvoiceDTO> inList = new ArrayList<InvoiceDTO>();
+
+        for (Invoice i : Ilist) {
+            InvoiceDTO in = new InvoiceDTO();
+            in.setDescription(i.getDescription());
+            in.setEnabled(i.getEnabledFlag());
+            in.setId(i.getInvoiceId());
+            in.setInvoice_no(i.getInvoiceNo());
+            in.setRecieved(i.getRecievedFlag());
+            in.setAmount(i.getTotalAmount());
+            in.setCreatedTimeStamp(i.getCreatedTimeStamp());
+            in.setUpdatedTimestamp(i.getUpdatedTimeStamp());
+
+            inList.add(in);
+
+        }
+        return inList;
+
+    }
 }

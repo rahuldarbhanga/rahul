@@ -7,7 +7,7 @@ package com.wissen.NewGiskard.server.impl;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.wissen.NewGiskard.client.services.AuthanticateUserService;
 import com.wissen.NewGiskard.server.UserAuthantication;
-import com.wissen.NewGiskard.server.domainObjects.LoginDetails;
+import com.wissen.NewGiskard.server.domainObjects.Login;
 
 /**
  * @author Rahul Patil
@@ -24,7 +24,7 @@ public class AuthanticateUserServiceImpl extends RemoteServiceServlet implements
         Boolean Tag = false;
 
         UserAuthantication userAuthanticate = new UserAuthantication();
-        LoginDetails logDetails = userAuthanticate.authUser(userName, password);
+        Login logDetails = userAuthanticate.authUser(userName, password);
 
         if (logDetails != null) {
             Tag = true;

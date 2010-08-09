@@ -11,11 +11,13 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.wissen.NewGiskard.client.data.InvoiceDTO;
 import com.wissen.NewGiskard.server.impl.GetEnabledInvoiceImpl;
 
 /**
@@ -36,11 +38,13 @@ public class GetEnabledInvoiceImplTest {
     @Before
     public void setUp() throws Exception {
         GetImpl = new GetEnabledInvoiceImpl();
+
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/NewGiskard", "root", "wissen");
             statement = connection.createStatement();
-            statement.execute("insert into invoice values(2,'2010-06-06 10:12:12' ,'Java Company',0,1,1,5000,'2010-06-06 11:12:12')");
+            statement.executeUpdate("insert into invoice values(111,'2010-06-06 10:12:12' ,'Java Company',0,1,1,5000,'2010-06-06 11:12:12')");
+            statement.executeUpdate("insert into invoice values(112,'2010-06-06 10:12:12' ,'Java Company',1,2,1,5666,'2010-06-06 11:12:12')");
             statement.close();
 
         } catch (Exception e) {
@@ -53,7 +57,8 @@ public class GetEnabledInvoiceImplTest {
     public void tearDown() throws Exception {
         try {
             statement = connection.createStatement();
-            statement.execute("delete from invoice where invoice_id = 2");
+            statement.execute("delete from invoice where invoice_id = 111");
+            statement.execute("delete from invoice where invoice_id = 112");
             statement.close();
             connection.close();
         } catch (SQLException e) {
@@ -69,9 +74,11 @@ public class GetEnabledInvoiceImplTest {
     public void testgetInvoices() {
         Boolean result;
 
-        result = GetImpl.getEnabledInvoice();
-        assertTrue("The Result is: " + result + "  Instead of True", result = true);
-
+        List<InvoiceDTO> dtos = GetImpl.getEnabledInvoice();
+        result = true;
+        if (result) {
+            assertTrue("The Result is: " + result + "  Instead of True", result = true);
+        }
     }
 
 }

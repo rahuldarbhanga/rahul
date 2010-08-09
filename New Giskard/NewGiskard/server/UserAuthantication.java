@@ -3,7 +3,7 @@ package com.wissen.NewGiskard.server;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import com.wissen.NewGiskard.server.domainObjects.LoginDetails;
+import com.wissen.NewGiskard.server.domainObjects.Login;
 import com.wissen.NewGiskard.server.hibernate.HibernateUtill;
 
 public class UserAuthantication {
@@ -12,7 +12,7 @@ public class UserAuthantication {
      * Description:- Method For Authantication Of User From Database.
      */
 
-    public LoginDetails authUser(String userName, String password) {
+    public Login authUser(String userName, String password) {
 
         HibernateUtill hibernateUtill = new HibernateUtill();
 
@@ -22,7 +22,7 @@ public class UserAuthantication {
                 .createQuery("from LoginDetails GiskardLoginData where GiskardLoginData.userName = :userName and GiskardLoginData.password = :password");
         userAuthanticationQuery.setParameter("userName", userName);
         userAuthanticationQuery.setParameter("password", password);
-        LoginDetails GiskardLoginData = (LoginDetails) userAuthanticationQuery.uniqueResult();
+        Login GiskardLoginData = (Login) userAuthanticationQuery.uniqueResult();
 
         return GiskardLoginData;
 

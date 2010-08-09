@@ -4,8 +4,11 @@
  */
 package com.wissen.NewGiskard.client.services;
 
+import java.util.List;
+
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
+import com.wissen.NewGiskard.client.data.InvoiceDTO;
 
 /**
  * @author Rahul Patil
@@ -15,6 +18,6 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 @RemoteServiceRelativePath("invoice")
 public interface GetEnabledInvoice extends RemoteService {
 
-    Boolean getEnabledInvoice() throws IllegalArgumentException;
+    List<InvoiceDTO> getEnabledInvoice() throws IllegalArgumentException;
 
 }
