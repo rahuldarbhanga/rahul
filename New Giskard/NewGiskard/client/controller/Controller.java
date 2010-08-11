@@ -12,6 +12,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.wissen.NewGiskard.client.data.ColumnData;
 import com.wissen.NewGiskard.client.data.InvoiceDTO;
+import com.wissen.NewGiskard.client.observers.DisplayObserver;
 import com.wissen.NewGiskard.client.observers.LoginObserver;
 import com.wissen.NewGiskard.client.services.AuthanticateUserService;
 import com.wissen.NewGiskard.client.services.AuthanticateUserServiceAsync;
@@ -46,7 +47,9 @@ public class Controller {
     }
 
     // ---------------------- Observers -------------------------------
-    private List<LoginObserver> loginObservers = new ArrayList<LoginObserver>();
+    private List<LoginObserver>   loginObservers   = new ArrayList<LoginObserver>();
+
+    private List<DisplayObserver> displayObservers = new ArrayList<DisplayObserver>();
 
     public void addLoginObserver(LoginObserver observer) {
         loginObservers.add(observer);
@@ -54,6 +57,14 @@ public class Controller {
 
     public void removeLoginObserver(LoginObserver observer) {
         loginObservers.remove(observer);
+    }
+
+    public void addDisplayObserver(DisplayObserver observer) {
+        displayObservers.add(observer);
+    }
+
+    public void removeDisplayObserver(DisplayObserver observer) {
+        displayObservers.remove(observer);
     }
 
     // ---------------------- Controller's Methods ---------------------
@@ -75,24 +86,30 @@ public class Controller {
                                                                          @Override
                                                                          public void onSuccess(List<InvoiceDTO> result) {
                                                                              if (result == null) {
-                                                                                 Window.alert("There are no records in database");
+                                                                                 Window.alert("There Are No Records in Database");
                                                                              } else {
                                                                                  listColumnData = new ArrayList<ColumnData[]>();
                                                                                  ColumnData[] columnDatas;
                                                                                  for (InvoiceDTO invoiceDTO : result) {
-                                                                                     columnDatas = invoiceDTO.GetColumnData(invoiceDTO);
+                                                                                     columnDatas = invoiceDTO.GetColumnData();
                                                                                      listColumnData.add(columnDatas);
                                                                                  }
 
                                                                                  String[] columnHeader = InvoiceDTO.GetColumnHeader();
 
-                                                                                 Window.alert(result.size() + "");
+                                                                                 for (DisplayObserver observer : displayObservers) {
+                                                                                     observer.notifyDisplaySucceeded(columnHeader, listColumnData);
+                                                                                 }
+
                                                                              }
                                                                          }
 
                                                                          @Override
                                                                          public void onFailure(Throwable caught) {
-                                                                             Window.alert("Server Error");
+                                                                             Window.alert("Server Error....!!!");
+                                                                             for (DisplayObserver observer : displayObservers) {
+                                                                                 observer.notifyDisplayFailed("Operation Failed: " + caught);
+                                                                             }
                                                                          }
                                                                      };
 

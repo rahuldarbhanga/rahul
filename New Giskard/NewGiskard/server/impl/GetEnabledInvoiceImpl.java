@@ -6,6 +6,7 @@ package com.wissen.NewGiskard.server.impl;
 
 import java.util.List;
 
+import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.wissen.NewGiskard.client.data.InvoiceDTO;
 import com.wissen.NewGiskard.client.services.GetEnabledInvoice;
 import com.wissen.NewGiskard.server.GetEnabledInvoices;
@@ -15,7 +16,8 @@ import com.wissen.NewGiskard.server.GetEnabledInvoices;
  * 
  *         Create Date : 06-Aug-2010 Description:- Service To Get The Enabled Invoice.
  */
-public class GetEnabledInvoiceImpl implements GetEnabledInvoice {
+@SuppressWarnings("serial")
+public class GetEnabledInvoiceImpl extends RemoteServiceServlet implements GetEnabledInvoice {
 
     @Override
     public List<InvoiceDTO> getEnabledInvoice() throws IllegalArgumentException {

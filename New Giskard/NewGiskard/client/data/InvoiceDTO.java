@@ -102,24 +102,24 @@ public class InvoiceDTO implements IsSerializable {
      * 
      */
 
-    public ColumnData[] GetColumnData(InvoiceDTO dto) {
-        ColumnData[] columns = new ColumnData[4];
+    public ColumnData[] GetColumnData() {
+        ColumnData[] columns = new ColumnData[5];
 
         columns[0] = new ColumnData();
-        columns[0].setValues(dto.getId().toString());
+        columns[0].setValues(this.getId().toString());
 
         columns[1] = new ColumnData();
-        columns[1].setValues(dto.getDescription());
+        columns[1].setValues(this.getDescription());
 
         columns[2] = new ColumnData();
-        columns[2].setValues(dto.getAmount() + "");
+        columns[2].setValues(this.getAmount() + "");
 
         columns[3] = new ColumnData();
-        columns[3].setValues(dto.getEnabled().toString());
+        columns[3].setValues(this.getEnabled().toString());
         columns[3].setType(1);
 
         columns[4] = new ColumnData();
-        columns[4].setValues(dto.getRecieved().toString());
+        columns[4].setValues(this.getRecieved().toString());
         columns[4].setType(1);
 
         return columns;
@@ -132,7 +132,7 @@ public class InvoiceDTO implements IsSerializable {
      */
     public static String[] GetColumnHeader() {
 
-        String[] columnHeader = new String[4];
+        String[] columnHeader = new String[5];
 
         columnHeader[0] = "Invoice ID";
         columnHeader[1] = "Description";
