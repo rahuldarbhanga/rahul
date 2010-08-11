@@ -24,13 +24,14 @@ import com.wissen.NewGiskard.server.hibernate.HibernateUtill;
 
 public class GetEnabledInvoices {
 
+    @SuppressWarnings("unchecked")
     public List<InvoiceDTO> getInvoices() {
 
         HibernateUtill hibernateUtill = new HibernateUtill();
 
         Session session = hibernateUtill.getSession();
 
-        Query userAuthanticationQuery = session.createQuery(" from Invoice invoice where invoice.enabledFlag = '1' ");
+        Query userAuthanticationQuery = session.createQuery(" from Invoice invoice where invoice.enabledFlag = '1' order by invoice_id");
 
         return invoiceConvertToInvoiceDTO(userAuthanticationQuery.list());
 

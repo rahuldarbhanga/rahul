@@ -19,7 +19,7 @@ public class UserAuthantication {
         Session session = hibernateUtill.getSession();
 
         Query userAuthanticationQuery = session
-                .createQuery("from LoginDetails GiskardLoginData where GiskardLoginData.userName = :userName and GiskardLoginData.password = :password");
+                .createQuery("from Login GiskardLoginData where GiskardLoginData.userName = :userName and GiskardLoginData.password = :password");
         userAuthanticationQuery.setParameter("userName", userName);
         userAuthanticationQuery.setParameter("password", password);
         Login GiskardLoginData = (Login) userAuthanticationQuery.uniqueResult();
